@@ -1,0 +1,73 @@
+Developing Data projects
+========================================================
+author: Hans-Joachim Kirlum
+date: May 24, 2015
+width: 1440
+height: 900
+
+Swiss Data
+========================================================
+transition: rotate
+
+Standardized fertility measure and socio-economic indicators for each of 47 French-speaking provinces of Switzerland at about 1888.
+```{r, cache=TRUE, echo=FALSE}
+data(swiss)
+summary(swiss)
+```
+
+
+
+Plot1
+========================================================
+transition: zoom
+
+The Plot shows the fertility measures in dependency on the percentage of males involved in agriculture as occupation.
+
+```{r, echo=FALSE}
+data(swiss)
+library(ggplot2)
+g <- qplot(swiss$Agriculture, swiss$Fertility, xlab="Agriculture", ylab="Fertility",
+                 col='black')
+            meanh <- mean(swiss$Fertility)
+            meanv <- mean(swiss$Agriculture)
+g <- g + geom_hline(xintercept = meanh,col="black",lwd=1)
+g <- g + geom_vline(xintercept = meanv,col="black",lwd=1)
+g
+```
+
+Plot 2
+========================================================
+transition: fade
+
+The Plot shows the fertility measures in dependency on the percentage of draftees receiving highest mark on army examination.
+
+```{r, echo=FALSE}
+data(swiss)
+library(ggplot2)
+g <- qplot(swiss$Examination, swiss$Fertility, xlab="Examination", ylab="Fertility",
+                 col='black')
+            meanh <- mean(swiss$Fertility)
+            meanv <- mean(swiss$Examination)
+g <- g + geom_hline(xintercept = meanh,col="black",lwd=1)
+g <- g + geom_vline(xintercept = meanv,col="black",lwd=1)
+g
+```
+
+
+Plot 3
+========================================================
+transition: linear
+
+The Plot shows the fertility measures in dependency on the percentage of education beyond primary school for draftees.
+
+```{r, echo=FALSE}
+data(swiss)
+library(ggplot2)
+g <- qplot(swiss$Education, swiss$Fertility, xlab="Education", ylab="Fertility",
+                 col='black')
+            meanh <- mean(swiss$Fertility)
+            meanv <- mean(swiss$Education)
+g <- g + geom_hline(xintercept = meanh)
+g <- g + geom_vline(xintercept = meanv,col="black",lwd=1)
+g
+```
